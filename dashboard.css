@@ -2,15 +2,15 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 3
-  - Primary gradient: #3C4AAC -> #13989F
+  - Version: 4
+  - Primary gradient: #3C4AAC -> #13989F (reversed direction)
 */
 
 :root {
   --pykxel-font: "Poppins", sans-serif;
   --pykxel-grad-left: #3C4AAC;
   --pykxel-grad-right: #13989F;
-  --pykxel-gradient: linear-gradient(90deg, var(--pykxel-grad-left) 0%, var(--pykxel-grad-right) 100%);
+  --pykxel-gradient: linear-gradient(90deg, var(--pykxel-grad-right) 0%, var(--pykxel-grad-left) 100%);
 
   /* Light tinted surfaces */
   --pykxel-surface: #F8FAFC;
@@ -54,21 +54,40 @@ div {
 
 topmenu-nav a,
 topmenu-nav button,
-hl_header a,
-hl_header button,
-hl_header .btn,
-hl_header .hl-btn {
+.hl_header a,
+.hl_header button,
+.hl_header .btn,
+.hl_header .hl-btn {
   background: rgba(255, 255, 255, 0.18) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-topmenu-nav svg,
-topmenu-nav i,
-hl_header svg,
-hl_header i {
+.topmenu-nav svg,
+.topmenu-nav i,
+.topmenu-nav path,
+.hl_header svg,
+.hl_header i,
+.hl_header path {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
+}
+
+/* Secondary section tab bar should be distinct from top bar */
+.sub-nav,
+.hl_subnav,
+.hl-secondary-nav,
+topmenu-nav + .sub-nav,
+topmenu-nav + .hl_subnav {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--pykxel-border) !important;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
+}
+
+.sub-nav a,
+.hl_subnav a,
+.hl-secondary-nav a {
+  color: var(--pykxel-text) !important;
 }
 
 /* Sidebar: full gradient + white text */
@@ -81,7 +100,8 @@ hl_header i {
 #sidebar-v2 a,
 #sidebar-v2 a span,
 #sidebar-v2 a i,
-#sidebar-v2 a svg {
+#sidebar-v2 a svg,
+#sidebar-v2 a path {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
 }
@@ -103,6 +123,7 @@ hl_header i {
 /* Sidebar scrolling */
 #sidebar-v2 {
   overflow-y: auto !important;
+  overflow-x: visible !important;
   max-height: 100vh !important;
 }
 
@@ -114,6 +135,31 @@ hl_header i {
 }
 #location-switcher-sidbar-v2 span {
   color: var(--pykxel-text-on-grad) !important;
+}
+
+/* Subaccount list dropdown (ensure readable) */
+.location-switcher__menu,
+.hl_location-switcher__menu,
+.hl-location-switcher__menu,
+.hl-location-switcher__dropdown,
+.location-switcher__dropdown,
+#sidebar-v2 .dropdown-menu,
+#sidebar-v2 .menu,
+#sidebar-v2 .popover,
+#sidebar-v2 .n-popover {
+  background: #ffffff !important;
+  color: var(--pykxel-text) !important;
+  border: 1px solid var(--pykxel-border) !important;
+  box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
+  z-index: 9999 !important;
+}
+
+.location-switcher__menu *,
+.hl_location-switcher__menu *,
+.hl-location-switcher__menu *,
+.hl-location-switcher__dropdown *,
+.location-switcher__dropdown * {
+  color: var(--pykxel-text) !important;
 }
 
 /* Banner: full gradient */
@@ -139,6 +185,10 @@ hl_header i {
   align-content: center !important;
 }
 
+.right_side1012 {
+  margin-left: auto !important;
+}
+
 .helloow1012 {
   font-weight: 700 !important;
   font-size: 26px !important;
@@ -147,7 +197,7 @@ hl_header i {
   margin: 0 !important;
 }
 
-.dashboard101224 {
+dashboard101224 {
   font-weight: 500 !important;
   font-size: 16px !important;
   line-height: 22px !important;

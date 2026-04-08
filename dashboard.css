@@ -2,7 +2,7 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 5
+  - Version: 6
   - Primary gradient: #3C4AAC -> #13989F
 */
 
@@ -46,66 +46,74 @@ div {
 
 /* Top bar uses gradient (reversed) to blend with sidebar */
 .topmenu-nav,
-.hl_header,
-.hl_header--wrapper,
-.hl_header__top,
-.hl_header__topbar,
-.hl_header__container {
+hl_header,
+hl_header--wrapper,
+hl_header__top,
+hl_header__topbar,
+hl_header__container {
   background: var(--pykxel-gradient-top) !important;
   box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
 }
 
-.topmenu-nav a,
-.topmenu-nav button,
-.hl_header a,
-.hl_header button,
-.hl_header .btn,
-.hl_header .hl-btn {
+topmenu-nav a,
+topmenu-nav button,
+hl_header a,
+hl_header button,
+hl_header .btn,
+hl_header .hl-btn {
   background: rgba(255, 255, 255, 0.18) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-.topmenu-nav svg,
-.topmenu-nav i,
-.topmenu-nav path,
-.topmenu-nav circle,
-.hl_header svg,
-.hl_header i,
-.hl_header path,
-.hl_header circle {
+topmenu-nav svg,
+topmenu-nav i,
+topmenu-nav path,
+topmenu-nav circle,
+hl_header svg,
+hl_header i,
+hl_header path,
+hl_header circle {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
   stroke: var(--pykxel-text-on-grad) !important;
 }
 
-/* Secondary section tab bar should be distinct from top bar */
+/* Secondary section tab bar (white like reference) */
 .sub-nav,
-.hl_subnav,
-.hl-secondary-nav,
+hl_subnav,
+hl-secondary-nav,
 topmenu-nav + .sub-nav,
 topmenu-nav + .hl_subnav,
-.hl_header + .hl_subnav,
-.hl_header + .sub-nav {
+hl_header + .hl_subnav,
+hl_header + .sub-nav,
+hl_header + .hl-secondary-nav {
   background: #ffffff !important;
   border-bottom: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
 }
 
 .sub-nav a,
-.hl_subnav a,
-.hl-secondary-nav a,
+hl_subnav a,
+hl-secondary-nav a,
 .sub-nav button,
-.hl_subnav button,
-.hl-secondary-nav button {
+hl_subnav button,
+hl_secondary-nav button {
   color: var(--pykxel-text) !important;
+  background: transparent !important;
 }
 
+/* Tab buttons: gradient pills with white text */
+.sub-nav a.active,
+hl_subnav a.active,
+hl-secondary-nav a.active,
 .sub-nav .active,
-.hl_subnav .active,
-.hl-secondary-nav .active {
-  color: var(--pykxel-grad-left) !important;
-  border-bottom: 2px solid var(--pykxel-grad-left) !important;
+hl_subnav .active,
+hl-secondary-nav .active {
+  background: var(--pykxel-gradient-top) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border-radius: 9999px !important;
+  padding: 6px 14px !important;
 }
 
 /* Sidebar: full gradient + white text */
@@ -120,6 +128,7 @@ topmenu-nav + .hl_subnav,
   overflow-y: auto !important;
   overflow-x: visible !important;
   max-height: 100vh !important;
+  padding: 8px 6px 12px 6px !important; /* subtle spacing */
 }
 
 #sidebar-v2 a,
@@ -131,7 +140,8 @@ topmenu-nav + .hl_subnav,
 #sidebar-v2 .n-icon,
 #sidebar-v2 .hl-icon,
 #sidebar-v2 .icon,
-#sidebar-v2 .material-icons {
+#sidebar-v2 .material-icons,
+#sidebar-v2 .material-icons-outlined {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
   stroke: var(--pykxel-text-on-grad) !important;
@@ -161,7 +171,7 @@ topmenu-nav + .hl_subnav,
   color: var(--pykxel-text-on-grad) !important;
 }
 
-/* Subaccount list dropdown (fix alignment and readability) */
+/* Subaccount list dropdown (fix readability + prevent sidebar push) */
 #sidebar-v2 .location-switcher__menu,
 #sidebar-v2 .hl_location-switcher__menu,
 #sidebar-v2 .hl-location-switcher__menu,
@@ -175,11 +185,11 @@ topmenu-nav + .hl_subnav,
   color: var(--pykxel-text) !important;
   border: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
-  z-index: 9999 !important;
-  position: absolute !important;
-  left: 100% !important;
-  top: 8px !important;
-  min-width: 260px !important;
+  z-index: 99999 !important;
+  position: fixed !important;
+  left: 260px !important;
+  top: 90px !important;
+  min-width: 320px !important;
   max-height: 70vh !important;
   overflow: auto !important;
 }

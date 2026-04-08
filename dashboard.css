@@ -2,15 +2,17 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 4
-  - Primary gradient: #3C4AAC -> #13989F (reversed direction)
+  - Version: 5
+  - Primary gradient: #3C4AAC -> #13989F
 */
 
 :root {
   --pykxel-font: "Poppins", sans-serif;
-  --pykxel-grad-left: #3C4AAC;
-  --pykxel-grad-right: #13989F;
-  --pykxel-gradient: linear-gradient(90deg, var(--pykxel-grad-right) 0%, var(--pykxel-grad-left) 100%);
+  --pykxel-grad-left: #3C4AAC;  /* blue */
+  --pykxel-grad-right: #13989F; /* teal */
+  --pykxel-gradient-sidebar: linear-gradient(90deg, var(--pykxel-grad-left) 0%, var(--pykxel-grad-right) 100%);
+  --pykxel-gradient-top: linear-gradient(90deg, var(--pykxel-grad-right) 0%, var(--pykxel-grad-left) 100%);
+  --pykxel-gradient-banner: var(--pykxel-gradient-top);
 
   /* Light tinted surfaces */
   --pykxel-surface: #F8FAFC;
@@ -42,18 +44,19 @@ div {
   font-family: var(--pykxel-font) !important;
 }
 
-/* Top bar uses gradient to blend with sidebar */
+/* Top bar uses gradient (reversed) to blend with sidebar */
 .topmenu-nav,
 .hl_header,
 .hl_header--wrapper,
 .hl_header__top,
 .hl_header__topbar,
 .hl_header__container {
-  background: var(--pykxel-gradient) !important;
+  background: var(--pykxel-gradient-top) !important;
+  box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
 }
 
-topmenu-nav a,
-topmenu-nav button,
+.topmenu-nav a,
+.topmenu-nav button,
 .hl_header a,
 .hl_header button,
 .hl_header .btn,
@@ -66,11 +69,14 @@ topmenu-nav button,
 .topmenu-nav svg,
 .topmenu-nav i,
 .topmenu-nav path,
+.topmenu-nav circle,
 .hl_header svg,
 .hl_header i,
-.hl_header path {
+.hl_header path,
+.hl_header circle {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
+  stroke: var(--pykxel-text-on-grad) !important;
 }
 
 /* Secondary section tab bar should be distinct from top bar */
@@ -78,7 +84,9 @@ topmenu-nav button,
 .hl_subnav,
 .hl-secondary-nav,
 topmenu-nav + .sub-nav,
-topmenu-nav + .hl_subnav {
+topmenu-nav + .hl_subnav,
+.hl_header + .hl_subnav,
+.hl_header + .sub-nav {
   background: #ffffff !important;
   border-bottom: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
@@ -86,45 +94,61 @@ topmenu-nav + .hl_subnav {
 
 .sub-nav a,
 .hl_subnav a,
-.hl-secondary-nav a {
+.hl-secondary-nav a,
+.sub-nav button,
+.hl_subnav button,
+.hl-secondary-nav button {
   color: var(--pykxel-text) !important;
+}
+
+.sub-nav .active,
+.hl_subnav .active,
+.hl-secondary-nav .active {
+  color: var(--pykxel-grad-left) !important;
+  border-bottom: 2px solid var(--pykxel-grad-left) !important;
 }
 
 /* Sidebar: full gradient + white text */
 #sidebar-v2,
 #sidebar-v2 .sidebar-wrapper,
 #sidebar-v2 .sidebar-v2 {
-  background: var(--pykxel-gradient) !important;
+  background: var(--pykxel-gradient-sidebar) !important;
+}
+
+#sidebar-v2 {
+  position: relative !important;
+  overflow-y: auto !important;
+  overflow-x: visible !important;
+  max-height: 100vh !important;
 }
 
 #sidebar-v2 a,
 #sidebar-v2 a span,
 #sidebar-v2 a i,
 #sidebar-v2 a svg,
-#sidebar-v2 a path {
+#sidebar-v2 a path,
+#sidebar-v2 a circle,
+#sidebar-v2 .n-icon,
+#sidebar-v2 .hl-icon,
+#sidebar-v2 .icon,
+#sidebar-v2 .material-icons {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
+  stroke: var(--pykxel-text-on-grad) !important;
 }
 
 #sidebar-v2 a.active {
-  background: rgba(255, 255, 255, 0.20) !important;
+  background: rgba(255, 255, 255, 0.22) !important;
   color: var(--pykxel-text-on-grad) !important;
 }
 
 #sidebar-v2 a:hover {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.14) !important;
 }
 
 #sidebar-v2 a.active span,
 #sidebar-v2 a:hover span {
   color: var(--pykxel-text-on-grad) !important;
-}
-
-/* Sidebar scrolling */
-#sidebar-v2 {
-  overflow-y: auto !important;
-  overflow-x: visible !important;
-  max-height: 100vh !important;
 }
 
 /* Location switcher pill on sidebar */
@@ -137,12 +161,12 @@ topmenu-nav + .hl_subnav {
   color: var(--pykxel-text-on-grad) !important;
 }
 
-/* Subaccount list dropdown (ensure readable) */
-.location-switcher__menu,
-.hl_location-switcher__menu,
-.hl-location-switcher__menu,
-.hl-location-switcher__dropdown,
-.location-switcher__dropdown,
+/* Subaccount list dropdown (fix alignment and readability) */
+#sidebar-v2 .location-switcher__menu,
+#sidebar-v2 .hl_location-switcher__menu,
+#sidebar-v2 .hl-location-switcher__menu,
+#sidebar-v2 .hl-location-switcher__dropdown,
+#sidebar-v2 .location-switcher__dropdown,
 #sidebar-v2 .dropdown-menu,
 #sidebar-v2 .menu,
 #sidebar-v2 .popover,
@@ -152,20 +176,27 @@ topmenu-nav + .hl_subnav {
   border: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
   z-index: 9999 !important;
+  position: absolute !important;
+  left: 100% !important;
+  top: 8px !important;
+  min-width: 260px !important;
+  max-height: 70vh !important;
+  overflow: auto !important;
 }
 
-.location-switcher__menu *,
-.hl_location-switcher__menu *,
-.hl-location-switcher__menu *,
-.hl-location-switcher__dropdown *,
-.location-switcher__dropdown * {
+#sidebar-v2 .location-switcher__menu *,
+#sidebar-v2 .hl_location-switcher__menu *,
+#sidebar-v2 .hl-location-switcher__menu *,
+#sidebar-v2 .hl-location-switcher__dropdown *,
+#sidebar-v2 .location-switcher__dropdown *,
+#sidebar-v2 .dropdown-menu * {
   color: var(--pykxel-text) !important;
 }
 
 /* Banner: full gradient */
 .main_container1012 {
   display: block;
-  background: var(--pykxel-gradient) !important;
+  background: var(--pykxel-gradient-banner) !important;
   padding: 22px 28px !important;
   margin: 16px 24px 8px 24px !important;
   border-radius: 12px !important;
@@ -197,7 +228,7 @@ topmenu-nav + .hl_subnav {
   margin: 0 !important;
 }
 
-dashboard101224 {
+.dashboard101224 {
   font-weight: 500 !important;
   font-size: 16px !important;
   line-height: 22px !important;
@@ -309,7 +340,7 @@ dashboard101224 {
 
 .hl_login--body .card .card-body .hl-btn {
   padding: 15px 25px !important;
-  background: var(--pykxel-gradient) !important;
+  background: var(--pykxel-gradient-top) !important;
   font-family: var(--pykxel-font) !important;
   color: var(--pykxel-text-on-grad) !important;
   font-size: 16px;

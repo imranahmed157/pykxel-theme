@@ -2,7 +2,7 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 6
+  - Version: 7
   - Primary gradient: #3C4AAC -> #13989F
 */
 
@@ -14,20 +14,16 @@
   --pykxel-gradient-top: linear-gradient(90deg, var(--pykxel-grad-right) 0%, var(--pykxel-grad-left) 100%);
   --pykxel-gradient-banner: var(--pykxel-gradient-top);
 
-  /* Light tinted surfaces */
   --pykxel-surface: #F8FAFC;
   --pykxel-surface-2: #F3F6FB;
 
-  /* Text */
   --pykxel-text-on-grad: #FFFFFF;
   --pykxel-text: #111827;
   --pykxel-muted: rgba(17, 24, 39, 0.70);
 
-  /* Borders */
   --pykxel-border: rgba(17, 24, 39, 0.10);
 }
 
-/* Global font */
 body,
 a,
 span,
@@ -44,13 +40,13 @@ div {
   font-family: var(--pykxel-font) !important;
 }
 
-/* Top bar uses gradient (reversed) to blend with sidebar */
+/* Top bar gradient */
 .topmenu-nav,
-hl_header,
-hl_header--wrapper,
-hl_header__top,
-hl_header__topbar,
-hl_header__container {
+.hl_header,
+.hl_header--wrapper,
+.hl_header__top,
+.hl_header__topbar,
+.hl_header__container {
   background: var(--pykxel-gradient-top) !important;
   box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
 }
@@ -66,23 +62,23 @@ hl_header .hl-btn {
   border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-topmenu-nav svg,
-topmenu-nav i,
-topmenu-nav path,
-topmenu-nav circle,
-hl_header svg,
-hl_header i,
-hl_header path,
-hl_header circle {
+.topmenu-nav svg,
+.topmenu-nav i,
+.topmenu-nav path,
+.topmenu-nav circle,
+.hl_header svg,
+.hl_header i,
+.hl_header path,
+.hl_header circle {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
   stroke: var(--pykxel-text-on-grad) !important;
 }
 
-/* Secondary section tab bar (white like reference) */
+/* Secondary section tab bar should be white; tabs are gradient pills */
 .sub-nav,
-hl_subnav,
-hl-secondary-nav,
+.hl_subnav,
+.hl-secondary-nav,
 topmenu-nav + .sub-nav,
 topmenu-nav + .hl_subnav,
 hl_header + .hl_subnav,
@@ -94,29 +90,28 @@ hl_header + .hl-secondary-nav {
 }
 
 .sub-nav a,
-hl_subnav a,
-hl-secondary-nav a,
+.hl_subnav a,
+.hl-secondary-nav a,
 .sub-nav button,
-hl_subnav button,
-hl_secondary-nav button {
+.hl_subnav button,
+.hl-secondary-nav button {
   color: var(--pykxel-text) !important;
   background: transparent !important;
 }
 
-/* Tab buttons: gradient pills with white text */
 .sub-nav a.active,
-hl_subnav a.active,
-hl-secondary-nav a.active,
+.hl_subnav a.active,
+.hl-secondary-nav a.active,
 .sub-nav .active,
-hl_subnav .active,
-hl-secondary-nav .active {
+.hl_subnav .active,
+.hl-secondary-nav .active {
   background: var(--pykxel-gradient-top) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 9999px !important;
   padding: 6px 14px !important;
 }
 
-/* Sidebar: full gradient + white text */
+/* Sidebar gradient + white icons/text */
 #sidebar-v2,
 #sidebar-v2 .sidebar-wrapper,
 #sidebar-v2 .sidebar-v2 {
@@ -128,7 +123,7 @@ hl-secondary-nav .active {
   overflow-y: auto !important;
   overflow-x: visible !important;
   max-height: 100vh !important;
-  padding: 8px 6px 12px 6px !important; /* subtle spacing */
+  padding: 10px 8px 14px 8px !important;
 }
 
 #sidebar-v2 a,
@@ -141,10 +136,17 @@ hl-secondary-nav .active {
 #sidebar-v2 .hl-icon,
 #sidebar-v2 .icon,
 #sidebar-v2 .material-icons,
-#sidebar-v2 .material-icons-outlined {
+#sidebar-v2 .material-icons-outlined,
+#sidebar-v2 .feather,
+#sidebar-v2 img {
   color: var(--pykxel-text-on-grad) !important;
   fill: var(--pykxel-text-on-grad) !important;
   stroke: var(--pykxel-text-on-grad) !important;
+}
+
+#sidebar-v2 img,
+#sidebar-v2 svg {
+  filter: brightness(0) invert(1) !important;
 }
 
 #sidebar-v2 a.active {
@@ -161,17 +163,15 @@ hl-secondary-nav .active {
   color: var(--pykxel-text-on-grad) !important;
 }
 
-/* Location switcher pill on sidebar */
 #location-switcher-sidbar-v2 {
   background: rgba(255, 255, 255, 0.18) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
   color: var(--pykxel-text-on-grad) !important;
-}
-#location-switcher-sidbar-v2 span {
+}#location-switcher-sidbar-v2 span {
   color: var(--pykxel-text-on-grad) !important;
 }
 
-/* Subaccount list dropdown (fix readability + prevent sidebar push) */
+/* Subaccount list dropdown: force outside sidebar */
 #sidebar-v2 .location-switcher__menu,
 #sidebar-v2 .hl_location-switcher__menu,
 #sidebar-v2 .hl-location-switcher__menu,
@@ -180,7 +180,9 @@ hl-secondary-nav .active {
 #sidebar-v2 .dropdown-menu,
 #sidebar-v2 .menu,
 #sidebar-v2 .popover,
-#sidebar-v2 .n-popover {
+#sidebar-v2 .n-popover,
+.n-popover,
+.n-popover__content {
   background: #ffffff !important;
   color: var(--pykxel-text) !important;
   border: 1px solid var(--pykxel-border) !important;
@@ -199,11 +201,13 @@ hl-secondary-nav .active {
 #sidebar-v2 .hl-location-switcher__menu *,
 #sidebar-v2 .hl-location-switcher__dropdown *,
 #sidebar-v2 .location-switcher__dropdown *,
-#sidebar-v2 .dropdown-menu * {
+#sidebar-v2 .dropdown-menu *,
+.n-popover *,
+.n-popover__content * {
   color: var(--pykxel-text) !important;
 }
 
-/* Banner: full gradient */
+/* Banner */
 .main_container1012 {
   display: block;
   background: var(--pykxel-gradient-banner) !important;
@@ -246,7 +250,6 @@ hl-secondary-nav .active {
   margin: 6px 0 0 0 !important;
 }
 
-/* Banner buttons */
 .another_one12347 {
   display: flex !important;
   gap: 10px !important;
@@ -275,113 +278,12 @@ hl-secondary-nav .active {
   border: 1px solid rgba(255, 255, 255, 0.9) !important;
 }
 
-/* Login page - Pykxel branding */
-.hl_login--header {
-  display: none !important;
-}
+/* Login page */
+.hl_login--header { display: none !important; }
 
-.hl_login--body .container-fluid,
-.hl_login--body .container-fluid > div:not(.card) {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  padding: 0 !important;
-}
-
-.hl_login--body .container-fluid:before,
-.hl_login--body .container-fluid > div:not(.card):before {
-  content: "";
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  height: 100vh;
-  max-width: 60%;
-  background-image:
-    radial-gradient(circle at 30% 30%, rgba(19, 152, 159, 0.15), rgba(60, 74, 172, 0.05)),
-    url("https://assets.cdn.filesafe.space/9GRYiLySPdVirhcEsaNl/media/6993379f6bac24fd3fca04bd.png");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: 320px auto;
-}
-
-.hl_login--body .card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-  max-width: 40% !important;
-  border: none !important;
-  box-shadow: none !important;
-  background: #ffffff !important;
-  border-radius: 0 !important;
-}
-
-.hl_login--body .card .card-body {
-  display: block;
-  margin-top: 120px !important;
-  padding: 60px !important;
-  box-sizing: border-box;
-  width: 100% !important;
-  max-width: 80% !important;
-  text-align: left;
-}
-
-.hl_login--body .heading2 {
-  font-weight: 600;
-  color: var(--pykxel-text) !important;
-  font-size: 23px !important;
-}
-
-.hl_login--body .card .card-body input[type="text"],
-.hl_login--body .card .card-body input[type="password"] {
-  border: 1px solid var(--pykxel-border) !important;
-  background: var(--pykxel-surface-2) !important;
-  color: var(--pykxel-text) !important;
-  padding: 14px 18px !important;
-  border-radius: 10px !important;
-  font-size: 14px;
-  line-height: 20px;
-}
-
-.hl_login--body .card .card-body .hl-btn {
-  padding: 15px 25px !important;
-  background: var(--pykxel-gradient-top) !important;
-  font-family: var(--pykxel-font) !important;
-  color: var(--pykxel-text-on-grad) !important;
-  font-size: 16px;
-  text-transform: uppercase;
-  border-radius: 10px !important;
-  border: none !important;
-}
-
-.hl_login--body .card .card-body .hl-btn:hover {
-  filter: brightness(0.95);
-  transform: translateY(-2px);
-  transition: 0.2s;
-}
-
-.hl_login--body .card .card-body .forgot-password,
-.hl_login--body .card .card-body .foot-note,
-.hl_login--body .card .card-body .foot-note a {
-  color: var(--pykxel-text) !important;
-}
-
-/* Responsive login */
 @media only screen and (max-width: 1024px) {
-  .hl_login--body .card {
-    max-width: 100% !important;
-  }
+  .hl_login--body .card { max-width: 100% !important; }
   .hl_login--body .container-fluid:before,
-  .hl_login--body .container-fluid:after {
-    display: none;
-  }
-  .hl_login--body .card .card-body {
-    max-width: 90% !important;
-    margin-top: 0 !important;
-  }
+  .hl_login--body .container-fluid:after { display: none; }
+  .hl_login--body .card .card-body { max-width: 90% !important; margin-top: 0 !important; }
 }

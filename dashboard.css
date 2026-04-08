@@ -1,0 +1,96 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/*
+  Pykxel Automation - HighLevel Theme CSS
+  - Version: 1
+  - Primary gradient: #3C4AAC -> #13989F
+  - Notes:
+    - This file is intended to be loaded into HighLevel via a <link rel="stylesheet"> tag.
+    - Keep this file as the single source of truth for theme styling.
+*/
+
+:root {
+  --pykxel-font: "Poppins", sans-serif;
+  --pykxel-grad-left: #3C4AAC;
+  --pykxel-grad-right: #13989F;
+  --pykxel-gradient: linear-gradient(90deg, var(--pykxel-grad-left) 0%, var(--pykxel-grad-right) 100%);
+
+  /* Light tinted surfaces */
+  --pykxel-surface: #F8FAFC;
+  --pykxel-surface-2: #F3F6FB;
+
+  /* Text */
+  --pykxel-text-on-grad: #FFFFFF;
+  --pykxel-text: #111827;
+  --pykxel-muted: rgba(17, 24, 39, 0.70);
+
+  /* Borders */
+  --pykxel-border: rgba(17, 24, 39, 0.10);
+}
+
+/* Global font */
+body,
+a,
+span,
+strong,
+td,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div {
+  font-family: var(--pykxel-font) !important;
+}
+
+/*
+  Minimal, safe starter overrides.
+  We will expand these in the next iteration after confirming GitHub Pages is serving the file correctly.
+*/
+
+/* Selected/active states use full gradient fill */
+#sidebar-v2 a.active,
+.topmenu-nav a.active,
+.topmenu-nav .hidden a.active {
+  background: var(--pykxel-gradient) !important;
+}
+
+#sidebar-v2 a.active span,
+.topmenu-nav a.active span,
+.topmenu-nav .hidden a.active span {
+  color: var(--pykxel-text-on-grad) !important;
+}
+
+/* Hover state (optional) */
+#sidebar-v2 a:hover {
+  background: var(--pykxel-gradient) !important;
+}
+#sidebar-v2 a:hover span {
+  color: var(--pykxel-text-on-grad) !important;
+}
+
+/* Banner: solid tinted with gradient accent */
+.main_container1012 {
+  background: var(--pykxel-surface) !important;
+  border-left: 8px solid transparent !important;
+  border-image: var(--pykxel-gradient) 1 !important;
+}
+
+.helloow1012,
+.dashboard101224 {
+  color: var(--pykxel-text) !important;
+}
+
+/* Banner buttons */
+.another_one12347 a {
+  background: var(--pykxel-gradient) !important;
+  color: var(--pykxel-text-on-grad) !important;
+}
+
+.another_one12347 a:nth-child(2) {
+  background: var(--pykxel-surface-2) !important;
+  color: var(--pykxel-text) !important;
+  border: 1px solid var(--pykxel-border) !important;
+}

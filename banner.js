@@ -1,4 +1,27 @@
 (function () {
+  /* ── Favicon injection ── */
+  function injectFavicon() {
+    var url =
+      "https://assets.cdn.filesafe.space/9GRYiLySPdVirhcEsaNl/media/69ce4798e030604aec393b61.png";
+    var links = document.querySelectorAll("link[rel~='icon']");
+    links.forEach(function (el) {
+      el.href = url;
+    });
+    if (!links.length) {
+      var link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      link.href = url;
+      document.head.appendChild(link);
+    }
+  }
+
+  if (document.head) {
+    injectFavicon();
+  } else {
+    document.addEventListener("DOMContentLoaded", injectFavicon);
+  }
+
   function isSubaccount() {
     return !!document.querySelector("#location-dashboard") || !!document.querySelector("#location_dashboard-main-content");
   }

@@ -2,7 +2,7 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 9
+  - Version: 10
   - Primary gradient: #3C4AAC -> #13989F
 */
 
@@ -69,41 +69,64 @@ div {
   stroke: var(--pykxel-text-on-grad) !important;
 }
 
-/* Secondary section tab bar (WHITE like reference) */
+/* Secondary section tab bar (WHITE) */
 .topmenu-nav,
 .sub-nav,
 .hl_subnav,
 .hl-secondary-nav,
 .hl_secondary-nav,
-.topmenu-nav + .sub-nav,
-.topmenu-nav + .hl_subnav,
-.hl_header + .hl_subnav,
-.hl_header + .sub-nav,
-.hl_header + .hl-secondary-nav,
 [data-testid="secondary-nav"] {
   background: #ffffff !important;
   border-bottom: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
+  padding: 4px 12px !important;
 }
 
-topmenu-nav .topmenu-navtitle {
+.topmenu-nav .topmenu-navtitle {
   color: var(--pykxel-text) !important;
 }
 
-topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_subnav a,.hl-secondary-nav a,.hl_secondary-nav a,.sub-nav button,.hl_subnav button,.hl-secondary-nav button,.hl_secondary-nav button,[data-testid="secondary-nav"] a,[data-testid="secondary-nav"] button {
+/* Inactive tabs — dark text, transparent background */
+.topmenu-nav .topmenu-navitem,
+.topmenu-nav .topmenu-navitem > a,
+.topmenu-nav a[id^="tb_"],
+.sub-nav a,
+.hl_subnav a,
+.hl-secondary-nav a,
+.hl_secondary-nav a,
+.sub-nav button,
+.hl_subnav button,
+.hl-secondary-nav button,
+.hl_secondary-nav button,
+[data-testid="secondary-nav"] a,
+[data-testid="secondary-nav"] button {
   color: var(--pykxel-text) !important;
   background: transparent !important;
 }
 
 /* Active tab pill (gradient with white text) */
-.topmenu-nav a.active,.topmenu-nav .topmenu-navitem.active,.sub-nav a.active,.hl_subnav a.active,.hl-secondary-nav a.active,.hl_secondary-nav a.active,.sub-nav .active,.hl_subnav .active,.hl-secondary-nav .active,.hl_secondary-nav .active,.hl-secondary-nav .n-tabs-tab--active,.hl_subnav .n-tabs-tab--active,[data-testid="secondary-nav"] .active {
+.topmenu-nav .topmenu-navitem.active,
+.topmenu-nav .topmenu-navitem.active > a,
+.topmenu-nav a[id^="tb_"].active,
+.topmenu-nav a.active[id^="tb_"],
+.sub-nav a.active,
+.hl_subnav a.active,
+.hl-secondary-nav a.active,
+.hl_secondary-nav a.active,
+.sub-nav .active,
+.hl_subnav .active,
+.hl-secondary-nav .active,
+.hl_secondary-nav .active,
+.hl-secondary-nav .n-tabs-tab--active,
+.hl_subnav .n-tabs-tab--active,
+[data-testid="secondary-nav"] .active {
   background: var(--pykxel-gradient-top) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 9999px !important;
   padding: 6px 14px !important;
 }
 
-/* Sidebar gradient + white icons/text + tuned width */
+/* Sidebar gradient + white icons/text + locked width */
 #sidebar-v2,
 #sidebar-v2 .sidebar-wrapper,
 #sidebar-v2 .sidebar-v2,
@@ -118,6 +141,9 @@ topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_s
   max-height: 100vh !important;
   width: var(--pykxel-sidebar-width) !important;
   min-width: var(--pykxel-sidebar-width) !important;
+  max-width: var(--pykxel-sidebar-width) !important;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
   padding: 10px 8px 14px 8px !important;
 }
 
@@ -166,19 +192,21 @@ topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_s
   color: var(--pykxel-text-on-grad) !important;
 }
 
-/* Subaccount list dropdown (from your HTML: .hl_v2-location_switcher) */
+/* Subaccount list dropdown — fixed outside sidebar, readable */
 .hl_v2-location_switcher {
   background: #ffffff !important;
   color: var(--pykxel-text) !important;
   border: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
+  border-radius: 8px !important;
   z-index: 99999 !important;
   position: fixed !important;
   left: calc(var(--pykxel-sidebar-width) + 12px) !important;
-  top: 85px !important;
+  top: 60px !important;
   min-width: 340px !important;
   max-height: 70vh !important;
-  overflow: auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
 }
 
 .hl_v2-location_switcher * {

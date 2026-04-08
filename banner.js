@@ -3,11 +3,11 @@
     // Avoid duplicates
     if (document.querySelector(".main_container1012")) return;
 
-    // Only inject when we have the main app wrapper
+    // HighLevel app root
     var app = document.querySelector("#app");
     if (!app) return;
 
-    // Build banner
+    // Create banner
     var container = document.createElement("div");
     container.className = "main_container1012";
     container.innerHTML = [
@@ -18,15 +18,14 @@
       "  </div>",
       '  <div class="right_side1012">',
       '    <div class="another_one12347">',
-      '      <a href="mailto:support@pykxel.com">Email Pykxel Automation</a>',
+      '      <a href="mailto:help@pykxel.com">Email Pykxel Automation</a>',
       '      <a href="https://pykxel.com" target="_blank" rel="noopener">Pykxel Automation Services</a>',
       "    </div>",
       "  </div>",
       "</div>",
     ].join("\n");
 
-    // Insert near top of the app content.
-    // If a better anchor exists, use it; otherwise prepend to #app.
+    // Insert near top of the app content
     var anchor =
       document.querySelector(".hl_wrapper--inner") ||
       document.querySelector(".hl_wrapper") ||
@@ -39,7 +38,6 @@
   injectBanner();
 
   // Re-run on SPA navigation (HighLevel is a single-page app)
-  // This keeps it present when you navigate.
   var lastPath = location.pathname;
   setInterval(function () {
     if (location.pathname !== lastPath) {
@@ -47,4 +45,4 @@
       injectBanner();
     }
   }, 800);
-})();
+})();F

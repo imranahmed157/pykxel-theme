@@ -1,14 +1,12 @@
 (function () {
+  function isSubaccount() {
+    return !!document.querySelector("#location-dashboard") || !!document.querySelector("#location_dashboard-main-content");
+  }
+
   function getUserName() {
-    try {
-      if (window?.user?.name) return window.user.name;
-    } catch (e) {}
-    try {
-      if (window?.__INITIAL_STATE__?.user?.name) return window.__INITIAL_STATE__.user.name;
-    } catch (e) {}
-    try {
-      if (window?.__INITIAL_STATE__?.auth?.user?.name) return window.__INITIAL_STATE__.auth.user.name;
-    } catch (e) {}
+    try { if (window?.user?.name) return window.user.name; } catch (e) {}
+    try { if (window?.__INITIAL_STATE__?.user?.name) return window.__INITIAL_STATE__.user.name; } catch (e) {}
+    try { if (window?.__INITIAL_STATE__?.auth?.user?.name) return window.__INITIAL_STATE__.auth.user.name; } catch (e) {}
     try {
       const u = localStorage.getItem("user");
       if (u) {
@@ -44,6 +42,7 @@
   function injectBanner() {
     if (document.querySelector(".main_container1012")) return;
     if (location.pathname.includes("/login")) return;
+    if (!isSubaccount()) return;
 
     var name = getUserName();
     var greeting = name ? "Hey " + name : "Hey there";
@@ -58,7 +57,7 @@
       "  </div>",
       '  <div class="right_side1012">',
       '    <div class="another_one12347">',
-      '      <a class="pykxel-email" href="mailto:help@pykxel.com" target="_self">Customer Support</a>',
+      '      <a class="pykxel-email" href="mailto:help@pykxel.com">Customer Support</a>',
       '      <a href="https://pykxel.com" target="_blank" rel="noopener">Pykxel Automation Services</a>',
       "    </div>",
       "  </div>",
@@ -68,10 +67,8 @@
     var anchor =
       document.querySelector("#location-dashboard_container--banner") ||
       document.querySelector("#location_dashboard-main-content") ||
-      document.querySelector(".hl_wrapper--inner .hl_wrapper--content") ||
-      document.querySelector(".hl_wrapper--content") ||
-      document.querySelector(".hl_wrapper--inner") ||
-      document.querySelector("#app");
+      document.querySelector("#dashboard-wrapper") ||
+      document.querySelector("#location-dashboard");
 
     if (!anchor) return;
 

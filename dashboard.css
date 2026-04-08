@@ -2,7 +2,7 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 7
+  - Version: 8
   - Primary gradient: #3C4AAC -> #13989F
 */
 
@@ -51,12 +51,12 @@ div {
   box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
 }
 
-topmenu-nav a,
-topmenu-nav button,
-hl_header a,
-hl_header button,
-hl_header .btn,
-hl_header .hl-btn {
+.topmenu-nav a,
+.topmenu-nav button,
+.hl_header a,
+.hl_header button,
+.hl_header .btn,
+.hl_header .hl-btn {
   background: rgba(255, 255, 255, 0.18) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-color: rgba(255, 255, 255, 0.35) !important;
@@ -79,11 +79,13 @@ hl_header .hl-btn {
 .sub-nav,
 .hl_subnav,
 .hl-secondary-nav,
-topmenu-nav + .sub-nav,
-topmenu-nav + .hl_subnav,
-hl_header + .hl_subnav,
-hl_header + .sub-nav,
-hl_header + .hl-secondary-nav {
+.hl_secondary-nav,
+.topmenu-nav + .sub-nav,
+.topmenu-nav + .hl_subnav,
+.hl_header + .hl_subnav,
+.hl_header + .sub-nav,
+.hl_header + .hl-secondary-nav,
+[data-testid="secondary-nav"] {
   background: #ffffff !important;
   border-bottom: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
@@ -92,9 +94,13 @@ hl_header + .hl-secondary-nav {
 .sub-nav a,
 .hl_subnav a,
 .hl-secondary-nav a,
+.hl_secondary-nav a,
 .sub-nav button,
 .hl_subnav button,
-.hl-secondary-nav button {
+.hl-secondary-nav button,
+.hl_secondary-nav button,
+[data-testid="secondary-nav"] a,
+[data-testid="secondary-nav"] button {
   color: var(--pykxel-text) !important;
   background: transparent !important;
 }
@@ -102,9 +108,14 @@ hl_header + .hl-secondary-nav {
 .sub-nav a.active,
 .hl_subnav a.active,
 .hl-secondary-nav a.active,
+.hl_secondary-nav a.active,
 .sub-nav .active,
 .hl_subnav .active,
-.hl-secondary-nav .active {
+.hl-secondary-nav .active,
+.hl_secondary-nav .active,
+.hl-secondary-nav .n-tabs-tab--active,
+.hl_subnav .n-tabs-tab--active,
+[data-testid="secondary-nav"] .active {
   background: var(--pykxel-gradient-top) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 9999px !important;
@@ -123,6 +134,8 @@ hl_header + .hl-secondary-nav {
   overflow-y: auto !important;
   overflow-x: visible !important;
   max-height: 100vh !important;
+  width: 260px !important;
+  min-width: 260px !important;
   padding: 10px 8px 14px 8px !important;
 }
 
@@ -189,11 +202,12 @@ hl_header + .hl-secondary-nav {
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
   z-index: 99999 !important;
   position: fixed !important;
-  left: 260px !important;
+  left: 270px !important;
   top: 90px !important;
   min-width: 320px !important;
   max-height: 70vh !important;
   overflow: auto !important;
+  transform: none !important;
 }
 
 #sidebar-v2 .location-switcher__menu *,

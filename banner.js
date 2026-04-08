@@ -33,7 +33,9 @@
       }
     } catch (e) {}
     try {
-      const nameEl = document.querySelector(".hl_header--user-name, .hl_header--username, [data-testid='user-name']");
+      const nameEl = document.querySelector(
+        ".hl_header--user-name, .hl_header--username, [data-testid='user-name'], [data-testid='user-menu'] span"
+      );
       if (nameEl?.textContent?.trim()) return nameEl.textContent.trim();
     } catch (e) {}
     return null;
@@ -42,9 +44,6 @@
   function injectBanner() {
     if (document.querySelector(".main_container1012")) return;
     if (location.pathname.includes("/login")) return;
-
-    var app = document.querySelector("#app");
-    if (!app) return;
 
     var name = getUserName();
     var greeting = name ? "Hey " + name : "Hey there";
@@ -59,7 +58,7 @@
       "  </div>",
       '  <div class="right_side1012">',
       '    <div class="another_one12347">',
-      '      <a class="pykxel-email" href="mailto:help@pykxel.com">Customer Support</a>',
+      '      <a class="pykxel-email" href="mailto:help@pykxel.com" target="_self">Customer Support</a>',
       '      <a href="https://pykxel.com" target="_blank" rel="noopener">Pykxel Automation Services</a>',
       "    </div>",
       "  </div>",
@@ -67,14 +66,17 @@
     ].join("\n");
 
     var anchor =
+      document.querySelector("#location-dashboard_container--banner") ||
+      document.querySelector("#location_dashboard-main-content") ||
       document.querySelector(".hl_wrapper--inner .hl_wrapper--content") ||
       document.querySelector(".hl_wrapper--content") ||
       document.querySelector(".hl_wrapper--inner") ||
-      app;
+      document.querySelector("#app");
+
+    if (!anchor) return;
 
     anchor.insertBefore(container, anchor.firstChild);
 
-    // Ensure mailto triggers in SPA
     var emailBtn = container.querySelector(".pykxel-email");
     if (emailBtn) {
       emailBtn.addEventListener("click", function (e) {

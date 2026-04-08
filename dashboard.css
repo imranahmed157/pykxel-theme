@@ -2,7 +2,7 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 9
+  - Version: 10
   - Primary gradient: #3C4AAC -> #13989F
 */
 
@@ -86,17 +86,41 @@ div {
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
 }
 
-topmenu-nav .topmenu-navtitle {
+.topmenu-nav .topmenu-navtitle {
   color: var(--pykxel-text) !important;
 }
 
-topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_subnav a,.hl-secondary-nav a,.hl_secondary-nav a,.sub-nav button,.hl_subnav button,.hl-secondary-nav button,.hl_secondary-nav button,[data-testid="secondary-nav"] a,[data-testid="secondary-nav"] button {
+.topmenu-nav a,
+.topmenu-nav button,
+.topmenu-nav .topmenu-navitem,
+.sub-nav a,
+.hl_subnav a,
+.hl-secondary-nav a,
+.hl_secondary-nav a,
+.sub-nav button,
+.hl_subnav button,
+.hl-secondary-nav button,
+.hl_secondary-nav button,
+[data-testid="secondary-nav"] a,
+[data-testid="secondary-nav"] button {
   color: var(--pykxel-text) !important;
   background: transparent !important;
 }
 
 /* Active tab pill (gradient with white text) */
-.topmenu-nav a.active,.topmenu-nav .topmenu-navitem.active,.sub-nav a.active,.hl_subnav a.active,.hl-secondary-nav a.active,.hl_secondary-nav a.active,.sub-nav .active,.hl_subnav .active,.hl-secondary-nav .active,.hl_secondary-nav .active,.hl-secondary-nav .n-tabs-tab--active,.hl_subnav .n-tabs-tab--active,[data-testid="secondary-nav"] .active {
+.topmenu-nav a.active,
+.topmenu-nav .topmenu-navitem.active,
+.sub-nav a.active,
+.hl_subnav a.active,
+.hl-secondary-nav a.active,
+.hl_secondary-nav a.active,
+.sub-nav .active,
+.hl_subnav .active,
+.hl-secondary-nav .active,
+.hl_secondary-nav .active,
+.hl-secondary-nav .n-tabs-tab--active,
+.hl_subnav .n-tabs-tab--active,
+[data-testid="secondary-nav"] .active {
   background: var(--pykxel-gradient-top) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 9999px !important;
@@ -118,7 +142,8 @@ topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_s
   max-height: 100vh !important;
   width: var(--pykxel-sidebar-width) !important;
   min-width: var(--pykxel-sidebar-width) !important;
-  padding: 10px 8px 14px 8px !important;
+  padding: 8px 6px 14px 6px !important;
+  box-sizing: border-box !important;
 }
 
 #sidebar-v2 a,
@@ -174,15 +199,27 @@ topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_s
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
   z-index: 99999 !important;
   position: fixed !important;
-  left: calc(var(--pykxel-sidebar-width) + 12px) !important;
-  top: 85px !important;
-  min-width: 340px !important;
-  max-height: 70vh !important;
-  overflow: auto !important;
+  left: calc(var(--pykxel-sidebar-width) + 4px) !important;
+  top: 60px !important;
+  min-width: 320px !important;
+  max-height: 75vh !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  border-radius: 8px !important;
 }
 
 .hl_v2-location_switcher * {
   color: var(--pykxel-text) !important;
+}
+
+.hl_v2-location_switcher input,
+.hl_v2-location_switcher input::placeholder {
+  color: var(--pykxel-muted) !important;
+}
+
+.hl_v2-location_switcher li:hover,
+.hl_v2-location_switcher .location-item:hover {
+  background: var(--pykxel-surface-2) !important;
 }
 
 /* Banner */

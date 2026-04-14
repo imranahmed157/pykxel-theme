@@ -1,4 +1,22 @@
 (function () {
+  /* Pykxel branded favicon */
+  var FAVICON_URL = "https://assets.cdn.filesafe.space/9GRYiLySPdVirhcEsaNl/media/69ce4798e030604aec393b61.png";
+
+  function injectFavicon() {
+    var existing = document.querySelector("link[rel~='icon']");
+    if (existing) {
+      existing.href = FAVICON_URL;
+    } else {
+      var link = document.createElement("link");
+      link.rel = "icon";
+      link.type = "image/png";
+      link.href = FAVICON_URL;
+      document.head.appendChild(link);
+    }
+  }
+
+  injectFavicon();
+
   function isSubaccount() {
     return !!document.querySelector("#location-dashboard") || !!document.querySelector("#location_dashboard-main-content");
   }

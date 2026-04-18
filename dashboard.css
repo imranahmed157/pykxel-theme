@@ -2,10 +2,8 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 1.1.1
+  - Version: 1.1.1 FIXED
   - Primary gradient: #394EB0 -> #15A09B
-  - Fixed: Sidebar width/collapse, tab spacing, Ask AI button visibility
-  - Updated: 2026-04-18
 */
 
 :root {
@@ -17,18 +15,18 @@
   --pykxel-gradient-banner: var(--pykxel-gradient-top);
   --pykxel-sidebar-width: 240px;
   --pykxel-sidebar-collapsed: 70px;
-  --pykxel-surface: #F8FAFC;
-  --pykxel-surface-2: #F3F6FB;
   --pykxel-text-on-grad: #FFFFFF;
   --pykxel-text: #111827;
   --pykxel-muted: rgba(17, 24, 39, 0.70);
   --pykxel-border: rgba(17, 24, 39, 0.10);
 }
 
+/* Font family */
 body, a, span, strong, td, h1, h2, h3, h4, h5, h6, p, div {
   font-family: var(--pykxel-font) !important;
 }
 
+/* ===== HEADER ===== */
 .hl_header, .hl_header--wrapper, .hl_header__top, .hl_header__topbar, .hl_header__container {
   background: var(--pykxel-gradient-top) !important;
   box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
@@ -46,6 +44,7 @@ body, a, span, strong, td, h1, h2, h3, h4, h5, h6, p, div {
   stroke: var(--pykxel-text-on-grad) !important;
 }
 
+/* Ask AI Button */
 button[title*="AI"], button[title*="ai"], [class*="copilot"], .hl_header [class*="assist"] {
   background: #f0f0f0 !important;
   color: #333333 !important;
@@ -66,6 +65,7 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   stroke: #333333 !important;
 }
 
+/* ===== SIDEBAR ===== */
 #sidebar-v2, #sidebar-v2 .sidebar-wrapper, #sidebar-v2 .sidebar-v2, .sidebar-v2-location, .sidebar-v2-agency {
   background: var(--pykxel-gradient-sidebar) !important;
   width: var(--pykxel-sidebar-width) !important;
@@ -84,6 +84,7 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   overflow-x: hidden !important;
   max-height: 100vh !important;
   padding: 10px 8px 14px 8px !important;
+  z-index: 1000 !important;
 }
 
 #sidebar-v2 a, #sidebar-v2 a span, #sidebar-v2 a i, #sidebar-v2 a svg, #sidebar-v2 a path, #sidebar-v2 a circle, #sidebar-v2 .n-icon, #sidebar-v2 .hl-icon, #sidebar-v2 .icon, #sidebar-v2 .material-icons, #sidebar-v2 .material-icons-outlined, #sidebar-v2 .feather, #sidebar-v2 img {
@@ -126,11 +127,14 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   transform: scale(1.05) !important;
 }
 
+/* ===== LOCATION SWITCHER ===== */
 #location-switcher-sidbar-v2 {
   background: rgba(255, 255, 255, 0.18) !important;
   border: 1px solid rgba(255, 255, 255, 0.35) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 6px !important;
+  position: relative !important;
+  z-index: 1001 !important;
 }
 
 #location-switcher-sidbar-v2 span {
@@ -138,20 +142,22 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   font-weight: 500 !important;
 }
 
+/* ===== SUBACCOUNT DROPDOWN - FLOATING OUTSIDE SIDEBAR ===== */
 .hl_v2-location_switcher {
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: rgba(255, 255, 255, 0.98) !important;
   color: var(--pykxel-text) !important;
   border: 1px solid rgba(57, 78, 176, 0.2) !important;
   box-shadow: 0 10px 40px rgba(57, 78, 176, 0.15) !important;
-  z-index: 99999 !important;
-  position: absolute !important;
-  left: auto !important;
-  right: 0 !important;
-  top: 45px !important;
+  z-index: 9999 !important;
+  position: fixed !important;
+  left: 250px !important;
+  right: auto !important;
+  top: 80px !important;
   min-width: 340px !important;
   max-height: 70vh !important;
-  overflow: auto !important;
+  overflow-y: auto !important;
   border-radius: 12px !important;
+  padding: 10px !important;
 }
 
 .hl_v2-location_switcher * {
@@ -163,9 +169,34 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   background: rgba(57, 78, 176, 0.1) !important;
   color: var(--pykxel-grad-left) !important;
   border-radius: 6px !important;
+  padding: 8px !important;
 }
 
-.topmenu-nav, .sub-nav, .hl_subnav, .hl-secondary-nav, .hl_secondary-nav, [data-testid="secondary-nav"] {
+/* ===== MAIN CONTENT AREA - ENSURE TEXT IS VISIBLE ===== */
+body, body * {
+  color: #111827 !important;
+}
+
+.main-content, .content, [role="main"], main {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+p, span, div, a, label, button, h1, h2, h3, h4, h5, h6 {
+  color: #111827 !important;
+}
+
+a {
+  color: #394EB0 !important;
+  text-decoration: none !important;
+}
+
+a:hover {
+  color: #15A09B !important;
+}
+
+/* ===== TAB NAVIGATION ===== */
+.topmenu-nav, .sub-nav, .hl_subnav, .hl-secondary-nav, .hl_secondary-nav {
   background: #ffffff !important;
   border-bottom: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
@@ -174,8 +205,8 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   gap: 6px !important;
 }
 
-.topmenu-nav a, .topmenu-nav button, .topmenu-nav .topmenu-navitem, .sub-nav a, .hl_subnav a, .hl-secondary-nav a, .hl_secondary-nav a, .sub-nav button, .hl_subnav button, .hl-secondary-nav button {
-  color: var(--pykxel-text) !important;
+.topmenu-nav a, .topmenu-nav button, .topmenu-nav .topmenu-navitem, .sub-nav a, .hl_subnav a, .hl-secondary-nav a, .hl_secondary-nav a {
+  color: #111827 !important;
   background: transparent !important;
   transition: all 0.2s ease !important;
   margin: 0 6px 8px 0 !important;
@@ -185,23 +216,22 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   font-weight: 500 !important;
 }
 
-.topmenu-nav a:hover, .topmenu-nav button:hover, .sub-nav a:hover, .hl_subnav a:hover {
+.topmenu-nav a:hover, .sub-nav a:hover, .hl_subnav a:hover {
   background: #f3f3f3 !important;
   color: var(--pykxel-grad-left) !important;
   border-color: #e0e0e0 !important;
 }
 
-.topmenu-nav a.active, .topmenu-nav .topmenu-navitem.active, .sub-nav a.active, .hl_subnav a.active, .hl-secondary-nav a.active, .hl_secondary-nav a.active, .sub-nav .active, .hl_subnav .active {
+.topmenu-nav a.active, .topmenu-nav .topmenu-navitem.active, .sub-nav a.active, .hl_subnav a.active {
   background: var(--pykxel-gradient-top) !important;
   color: var(--pykxel-text-on-grad) !important;
   border-radius: 8px !important;
   padding: 6px 14px !important;
   box-shadow: 0 2px 8px rgba(57, 78, 176, 0.25) !important;
-  border: 1px solid transparent !important;
-  margin-bottom: 8px !important;
   font-weight: 600 !important;
 }
 
+/* ===== BANNER ===== */
 .main_container1012 {
   display: block;
   background: var(--pykxel-gradient-banner) !important;
@@ -289,15 +319,7 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
 }
 
 @media only screen and (max-width: 1024px) {
-  .hl_login--body .card {
-    max-width: 100% !important;
-  }
-  .hl_login--body .card .card-body {
-    max-width: 90% !important;
-    margin-top: 0 !important;
-  }
-  .v2-collapse #sidebar-v2 {
-    width: var(--pykxel-sidebar-collapsed) !important;
-    min-width: var(--pykxel-sidebar-collapsed) !important;
+  .hl_v2-location_switcher {
+    left: 70px !important;
   }
 }

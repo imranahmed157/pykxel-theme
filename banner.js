@@ -75,7 +75,7 @@
     if (!anchor) return;
 
     anchor.insertBefore(container, anchor.firstChild);
-    console.log("[PYKXEL] Banner injected");
+    console.log("[PYKXEL] Banner injected successfully");
   }
 
   injectBanner();
@@ -90,5 +90,5 @@
     }
   }, 500);
 
-  console.log("[PYKXEL] Banner system initialized");
+  console.log("[PYKXEL] Banner system initialized v1.1.1");
 })();

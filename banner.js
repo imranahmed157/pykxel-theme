@@ -1,8 +1,94 @@
-// banner.js
+(function () {
+  function isSubaccount() {
+    return !!document.querySelector("#location-dashboard") || !!document.querySelector("#location_dashboard-main-content");
+  }
 
-// Existing code...
-// Update the email and website information
-const email = 'support@pykxel.com';
-const website = 'https://pykxel.com';
+  function getUserName() {
+    try { if (window?.user?.name) return window.user.name; } catch (e) {}
+    try { if (window?.__INITIAL_STATE__?.user?.name) return window.__INITIAL_STATE__.user.name; } catch (e) {}
+    try { if (window?.__INITIAL_STATE__?.auth?.user?.name) return window.__INITIAL_STATE__.auth.user.name; } catch (e) {}
+    try {
+      const u = localStorage.getItem("user");
+      if (u) {
+        const j = JSON.parse(u);
+        if (j?.name) return j.name;
+        if (j?.firstName) return [j.firstName, j.lastName].filter(Boolean).join(" ");
+      }
+    } catch (e) {}
+    try {
+      const u = localStorage.getItem("authUser");
+      if (u) {
+        const j = JSON.parse(u);
+        if (j?.name) return j.name;
+        if (j?.firstName) return [j.firstName, j.lastName].filter(Boolean).join(" ");
+      }
+    } catch (e) {}
+    try {
+      const u = localStorage.getItem("hl_user");
+      if (u) {
+        const j = JSON.parse(u);
+        if (j?.name) return j.name;
+      }
+    } catch (e) {}
+    try {
+      const nameEl = document.querySelector(
+        ".hl_header--user-name, .hl_header--username, [data-testid='user-name'], [data-testid='user-menu'] span"
+      );
+      if (nameEl?.textContent?.trim()) return nameEl.textContent.trim();
+    } catch (e) {}
+    return null;
+  }
 
-// Remaining code functionality
+  function injectBanner() {
+    if (document.querySelector(".main_container1012")) return;
+    if (location.pathname.includes("/login")) return;
+    if (!isSubaccount()) return;
+
+    var name = getUserName();
+    var greeting = name ? "Hey " + name + " 👋" : "Hey there 👋";
+
+    var container = document.createElement("div");
+    container.className = "main_container1012";
+    container.setAttribute("data-pykxel-banner", "true");
+    container.innerHTML = [
+      '<div class="inside_container1012">',
+      '  <div class="left_side1012">',
+      '    <h2 class="helloow1012">' + greeting + '</h2>',
+      '    <h4 class="dashboard101224">Your dashboard is a great place to start your day.</h4>',
+      "  </div>",
+      '  <div class="right_side1012">',
+      '    <div class="another_one12347">',
+      '      <a href="mailto:support@pykxel.com">Email Support</a>',
+      '      <a href="tel:+971525526898">Call Support</a>',
+      '      <a href="https://pykxel.com" target="_blank" rel="noopener">Pykxel Services</a>',
+      "    </div>",
+      "  </div>",
+      "</div>",
+    ].join("\n");
+
+    var anchor =
+      document.querySelector("#location-dashboard_container--banner") ||
+      document.querySelector("#location_dashboard-main-content") ||
+      document.querySelector("#dashboard-wrapper") ||
+      document.querySelector("#location-dashboard");
+
+    if (!anchor) return;
+
+    anchor.insertBefore(container, anchor.firstChild);
+    console.log("[PYKXEL] Banner injected");
+  }
+
+  injectBanner();
+
+  var lastPath = location.pathname;
+  setInterval(function () {
+    if (location.pathname !== lastPath) {
+      lastPath = location.pathname;
+      var existing = document.querySelector("[data-pykxel-banner='true']");
+      if (existing) existing.remove();
+      setTimeout(injectBanner, 100);
+    }
+  }, 500);
+
+  console.log("[PYKXEL] Banner system initialized");
+})();

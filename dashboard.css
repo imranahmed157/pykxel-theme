@@ -158,7 +158,6 @@ button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
   padding: 10px !important;
 }
 
-.hl_v2-location_switcher *,
 .hl_v2-location_switcher p,
 .hl_v2-location_switcher span,
 .hl_v2-location_switcher div,
@@ -208,9 +207,9 @@ main, [role="main"],
 }
 
 /* Ensure main content text is readable without nuking all element colours */
-main p, main span, main h1, main h2, main h3, main h4, main h5, main h6, main label,
-[role="main"] p, [role="main"] span, [role="main"] h1, [role="main"] h2,
-[role="main"] h3, [role="main"] h4, [role="main"] h5, [role="main"] h6, [role="main"] label,
+main p, main span, main div, main h1, main h2, main h3, main h4, main h5, main h6, main label, main td, main th,
+[role="main"] p, [role="main"] span, [role="main"] div, [role="main"] h1, [role="main"] h2,
+[role="main"] h3, [role="main"] h4, [role="main"] h5, [role="main"] h6, [role="main"] label, [role="main"] td, [role="main"] th,
 .hl_main-content p, .hl_main-content span, .hl_main-content div,
 .hl_main-content h1, .hl_main-content h2, .hl_main-content h3,
 .hl_main-content h4, .hl_main-content h5, .hl_main-content h6,

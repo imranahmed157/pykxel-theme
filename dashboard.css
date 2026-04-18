@@ -1,25 +1,313 @@
-.dashboard {
-  /* Updated gradient colors */
-  background: linear-gradient(to right, #394EB0, #15A09B);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/*
+  Pykxel Automation - HighLevel Theme CSS
+  - Version: 1.1.1
+  - Primary gradient: #394EB0 -> #15A09B
+  - Fixed: Sidebar width/collapse, tab spacing, Ask AI button visibility
+  - Updated: 2026-04-18
+*/
+
+:root {
+  --pykxel-font: "Poppins", sans-serif;
+  --pykxel-grad-left: #394EB0;
+  --pykxel-grad-right: #15A09B;
+  --pykxel-gradient-sidebar: linear-gradient(90deg, var(--pykxel-grad-left) 0%, var(--pykxel-grad-right) 100%);
+  --pykxel-gradient-top: linear-gradient(90deg, var(--pykxel-grad-right) 0%, var(--pykxel-grad-left) 100%);
+  --pykxel-gradient-banner: var(--pykxel-gradient-top);
+  --pykxel-sidebar-width: 240px;
+  --pykxel-sidebar-collapsed: 70px;
+  --pykxel-surface: #F8FAFC;
+  --pykxel-surface-2: #F3F6FB;
+  --pykxel-text-on-grad: #FFFFFF;
+  --pykxel-text: #111827;
+  --pykxel-muted: rgba(17, 24, 39, 0.70);
+  --pykxel-border: rgba(17, 24, 39, 0.10);
 }
 
-.version {
-  /* Updated version */
-  version: 1.1.0;
+body, a, span, strong, td, h1, h2, h3, h4, h5, h6, p, div {
+  font-family: var(--pykxel-font) !important;
 }
 
-.subaccount-switcher {
-  /* Fixed positioning */
-  position: absolute;
-  left: 0;
+/* Top header bar (gradient) */
+.hl_header, .hl_header--wrapper, .hl_header__top, .hl_header__topbar, .hl_header__container {
+  background: var(--pykxel-gradient-top) !important;
+  box-shadow: 0 2px 12px rgba(17, 24, 39, 0.15) !important;
 }
 
-.banner-email {
-  /* Updated email address */
-  email: 'support@pykxel.com';
+.hl_header a, .hl_header button, .hl_header .btn, .hl_header .hl-btn {
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
 }
 
-.subaccount-switcher {
-  /* Updated background to use gradient variable */
-  background: var(--gradient);
+.hl_header svg, .hl_header i, .hl_header path, .hl_header circle {
+  color: var(--pykxel-text-on-grad) !important;
+  fill: var(--pykxel-text-on-grad) !important;
+  stroke: var(--pykxel-text-on-grad) !important;
+}
+
+/* Ask AI Button */
+button[title*="AI"], button[title*="ai"], [class*="copilot"], .hl_header [class*="assist"] {
+  background: #f0f0f0 !important;
+  color: #333333 !important;
+  border: 1px solid #d0d0d0 !important;
+  fill: #333333 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+button[title*="AI"]:hover, button[title*="ai"]:hover, [class*="copilot"]:hover {
+  background: #e0e0e0 !important;
+  border-color: #a0a0a0 !important;
+}
+
+button[title*="AI"] svg, button[title*="ai"] svg, [class*="copilot"] svg {
+  color: #333333 !important;
+  fill: #333333 !important;
+  stroke: #333333 !important;
+}
+
+/* Sidebar */
+#sidebar-v2, #sidebar-v2 .sidebar-wrapper, #sidebar-v2 .sidebar-v2, .sidebar-v2-location, .sidebar-v2-agency {
+  background: var(--pykxel-gradient-sidebar) !important;
+  width: var(--pykxel-sidebar-width) !important;
+  min-width: var(--pykxel-sidebar-width) !important;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1), min-width 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.v2-collapse #sidebar-v2, .v2-collapse .sidebar-v2-location, .v2-collapse .sidebar-v2-agency {
+  width: var(--pykxel-sidebar-collapsed) !important;
+  min-width: var(--pykxel-sidebar-collapsed) !important;
+}
+
+#sidebar-v2 {
+  position: relative !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  max-height: 100vh !important;
+  padding: 10px 8px 14px 8px !important;
+}
+
+#sidebar-v2 a, #sidebar-v2 a span, #sidebar-v2 a i, #sidebar-v2 a svg, #sidebar-v2 a path, #sidebar-v2 a circle, #sidebar-v2 .n-icon, #sidebar-v2 .hl-icon, #sidebar-v2 .icon, #sidebar-v2 .material-icons, #sidebar-v2 .material-icons-outlined, #sidebar-v2 .feather, #sidebar-v2 img {
+  color: var(--pykxel-text-on-grad) !important;
+  fill: var(--pykxel-text-on-grad) !important;
+  stroke: var(--pykxel-text-on-grad) !important;
+}
+
+#sidebar-v2 img, #sidebar-v2 svg {
+  filter: brightness(0) invert(1) !important;
+}
+
+#sidebar-v2 a.active {
+  background: rgba(255, 255, 255, 0.22) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border-radius: 6px !important;
+}
+
+#sidebar-v2 a:hover {
+  background: rgba(255, 255, 255, 0.14) !important;
+  border-radius: 6px !important;
+}
+
+#sidebar-v2 a.active span, #sidebar-v2 a:hover span {
+  color: var(--pykxel-text-on-grad) !important;
+  font-weight: 600 !important;
+}
+
+.hl_collapse-button, .sidebar-collapse-btn, .hl-sidebar-toggle, [class*="collapse"], #sidebar-v2 button {
+  color: var(--pykxel-text-on-grad) !important;
+  fill: var(--pykxel-text-on-grad) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: none !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.hl_collapse-button:hover, .sidebar-collapse-btn:hover, .hl-sidebar-toggle:hover, [class*="collapse"]:hover {
+  background: rgba(255, 255, 255, 0.18) !important;
+  transform: scale(1.05) !important;
+}
+
+/* Location Switcher */
+#location-switcher-sidbar-v2 {
+  background: rgba(255, 255, 255, 0.18) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border-radius: 6px !important;
+}
+
+#location-switcher-sidbar-v2 span {
+  color: var(--pykxel-text-on-grad) !important;
+  font-weight: 500 !important;
+}
+
+/* Subaccount Switcher */
+.hl_v2-location_switcher {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--pykxel-text) !important;
+  border: 1px solid rgba(57, 78, 176, 0.2) !important;
+  box-shadow: 0 10px 40px rgba(57, 78, 176, 0.15) !important;
+  z-index: 99999 !important;
+  position: absolute !important;
+  left: auto !important;
+  right: 0 !important;
+  top: 45px !important;
+  min-width: 340px !important;
+  max-height: 70vh !important;
+  overflow: auto !important;
+  border-radius: 12px !important;
+}
+
+.hl_v2-location_switcher * {
+  color: var(--pykxel-text) !important;
+  font-weight: 500 !important;
+}
+
+.hl_v2-location_switcher a:hover {
+  background: rgba(57, 78, 176, 0.1) !important;
+  color: var(--pykxel-grad-left) !important;
+  border-radius: 6px !important;
+}
+
+/* Tab Navigation */
+.topmenu-nav, .sub-nav, .hl_subnav, .hl-secondary-nav, .hl_secondary-nav, [data-testid="secondary-nav"] {
+  background: #ffffff !important;
+  border-bottom: 1px solid var(--pykxel-border) !important;
+  box-shadow: 0 2px 8px rgba(17, 24, 39, 0.06) !important;
+  margin-top: 3px !important;
+  padding-top: 8px !important;
+  gap: 6px !important;
+}
+
+.topmenu-nav a, .topmenu-nav button, .topmenu-nav .topmenu-navitem, .sub-nav a, .hl_subnav a, .hl-secondary-nav a, .hl_secondary-nav a, .sub-nav button, .hl_subnav button, .hl-secondary-nav button {
+  color: var(--pykxel-text) !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+  margin: 0 6px 8px 0 !important;
+  padding: 6px 14px !important;
+  border-radius: 8px !important;
+  border: 1px solid transparent !important;
+  font-weight: 500 !important;
+}
+
+.topmenu-nav a:hover, .topmenu-nav button:hover, .sub-nav a:hover, .hl_subnav a:hover {
+  background: #f3f3f3 !important;
+  color: var(--pykxel-grad-left) !important;
+  border-color: #e0e0e0 !important;
+}
+
+/* Active Tab */
+.topmenu-nav a.active, .topmenu-nav .topmenu-navitem.active, .sub-nav a.active, .hl_subnav a.active, .hl-secondary-nav a.active, .hl_secondary-nav a.active, .sub-nav .active, .hl_subnav .active {
+  background: var(--pykxel-gradient-top) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border-radius: 8px !important;
+  padding: 6px 14px !important;
+  box-shadow: 0 2px 8px rgba(57, 78, 176, 0.25) !important;
+  border: 1px solid transparent !important;
+  margin-bottom: 8px !important;
+  font-weight: 600 !important;
+}
+
+/* Banner */
+.main_container1012 {
+  display: block;
+  background: var(--pykxel-gradient-banner) !important;
+  padding: 22px 28px !important;
+  margin: 16px 24px 8px 24px !important;
+  border-radius: 12px !important;
+  box-shadow: 0 6px 18px rgba(17, 24, 39, 0.12) !important;
+}
+
+.inside_container1012 {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 16px !important;
+  flex-wrap: wrap !important;
+}
+
+.left_side1012 {
+  display: grid !important;
+  align-content: center !important;
+}
+
+.right_side1012 {
+  margin-left: auto !important;
+}
+
+.helloow1012 {
+  font-weight: 700 !important;
+  font-size: 26px !important;
+  line-height: 32px !important;
+  color: var(--pykxel-text-on-grad) !important;
+  margin: 0 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dashboard101224 {
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 22px !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  margin: 6px 0 0 0 !important;
+}
+
+.another_one12347 {
+  display: flex !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-end !important;
+}
+
+.another_one12347 a {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  line-height: 18px !important;
+  text-decoration: none !important;
+  padding: 10px 18px !important;
+  border-radius: 9999px !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+  color: var(--pykxel-text-on-grad) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  transition: all 0.2s ease !important;
+}
+
+.another_one12347 a:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+  transform: translateY(-2px) !important;
+}
+
+.another_one12347 a:first-child {
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  font-weight: 600 !important;
+}
+
+.another_one12347 a:first-child:hover {
+  background: #f5f5f5 !important;
+}
+
+/* Login Page */
+.hl_login--header {
+  display: none !important;
+}
+
+/* Mobile */
+@media only screen and (max-width: 1024px) {
+  .hl_login--body .card {
+    max-width: 100% !important;
+  }
+  .hl_login--body .card .card-body {
+    max-width: 90% !important;
+    margin-top: 0 !important;
+  }
+  .v2-collapse #sidebar-v2 {
+    width: var(--pykxel-sidebar-collapsed) !important;
+    min-width: var(--pykxel-sidebar-collapsed) !important;
+  }
 }

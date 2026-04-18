@@ -2,9 +2,9 @@
 
 /*
   Pykxel Automation - HighLevel Theme CSS
-  - Version: 1.1.2
+  - Version: 1.1.1
   - Primary gradient: #394EB0 -> #15A09B
-  - Fixed: Subaccount list gradient background, text visibility throughout, sidebar collapse
+  - Fixed: Sidebar width/collapse, tab spacing, Ask AI button visibility
   - Updated: 2026-04-18
 */
 
@@ -24,7 +24,6 @@
   --pykxel-text-on-grad: #FFFFFF;
   --pykxel-text: #111827;
   --pykxel-muted: rgba(17, 24, 39, 0.70);
-  --pykxel-muted-dark: rgba(17, 24, 39, 0.85);
 
   --pykxel-border: rgba(17, 24, 39, 0.10);
 }
@@ -214,9 +213,9 @@ button[title*="ai"] svg,
   font-weight: 500 !important;
 }
 
-/* ===== SUBACCOUNT LIST DROPDOWN - FIXED WITH GRADIENT ===== */
+/* ===== SUBACCOUNT LIST DROPDOWN ===== */
 .hl_v2-location_switcher {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(57, 78, 176, 0.08) 100%) !important;
+  background: rgba(255, 255, 255, 0.95) !important;
   color: var(--pykxel-text) !important;
   border: 1px solid rgba(57, 78, 176, 0.2) !important;
   box-shadow: 0 10px 40px rgba(57, 78, 176, 0.15) !important;
@@ -232,15 +231,6 @@ button[title*="ai"] svg,
 }
 
 .hl_v2-location_switcher * {
-  color: var(--pykxel-text) !important;
-}
-
-/* Subaccount items in list - improved text visibility */
-.hl_v2-location_switcher a,
-.hl_v2-location_switcher button,
-.hl_v2-location_switcher div,
-.hl_v2-location_switcher span,
-.hl_v2-location_switcher p {
   color: var(--pykxel-text) !important;
   font-weight: 500 !important;
 }
@@ -287,7 +277,7 @@ topmenu-nav a,
 .sub-nav button,
 .hl_subnav button,
 .hl-secondary-nav button {
-  color: var(--pykxel-muted-dark) !important;
+  color: var(--pykxel-text) !important;
   background: transparent !important;
   transition: all 0.2s ease !important;
   margin: 0 6px 8px 0 !important;
@@ -406,60 +396,6 @@ topmenu-nav a:hover,
 
 .another_one12347 a:first-child:hover {
   background: #f5f5f5 !important;
-}
-
-/* ===== TEXT VISIBILITY IMPROVEMENTS ===== */
-.hl_text-input-label,
-label,
-.form-label,
-[class*="label"] {
-  color: var(--pykxel-muted-dark) !important;
-  font-weight: 500 !important;
-}
-
-.card-body,
-.modal-body,
-[class*="content"] {
-  color: var(--pykxel-text) !important;
-}
-
-.card-header,
-.modal-header {
-  color: var(--pykxel-text) !important;
-  font-weight: 600 !important;
-}
-
-/* Table styling */
-table,
-table thead th,
-table tbody td {
-  color: var(--pykxel-text) !important;
-}
-
-table thead th {
-  background: rgba(57, 78, 176, 0.1) !important;
-  color: var(--pykxel-grad-left) !important;
-  font-weight: 600 !important;
-}
-
-table tbody tr:hover {
-  background: rgba(57, 78, 176, 0.05) !important;
-}
-
-/* Input and form elements */
-input,
-textarea,
-select,
-[class*="input"],
-[class*="form"] {
-  color: var(--pykxel-text) !important;
-  border-color: var(--pykxel-border) !important;
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: var(--pykxel-muted) !important;
-  opacity: 0.7 !important;
 }
 
 /* ===== LOGIN PAGE ===== */

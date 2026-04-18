@@ -168,7 +168,7 @@ topmenu-nav a,.topmenu-nav button,.topmenu-nav .topmenu-navitem,.sub-nav a,.hl_s
 
 /* Subaccount list dropdown (from your HTML: .hl_v2-location_switcher) */
 .hl_v2-location_switcher {
-  background: #ffffff !important;
+  background: #978ab5 !important;
   color: var(--pykxel-text) !important;
   border: 1px solid var(--pykxel-border) !important;
   box-shadow: 0 10px 30px rgba(17, 24, 39, 0.16) !important;
